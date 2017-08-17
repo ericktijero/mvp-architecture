@@ -5,16 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import erick.android.mvp.R;
 import erick.android.mvp.data.model.User;
 
@@ -43,10 +43,8 @@ public class MainMvpAdapter extends RecyclerView.Adapter<MainMvpAdapter.ViewHold
         final User user = users.get(position);
 
         if (user.getPicture() != null) {
-            Glide.with(context)
+            Picasso.with(context)
                     .load(user.getPicture().getThumbnail())
-                    .asBitmap()
-                    .centerCrop()
                     .into(holder.ivPicture);
         }
 
@@ -79,7 +77,7 @@ public class MainMvpAdapter extends RecyclerView.Adapter<MainMvpAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_picture)
-        ImageView ivPicture;
+        CircleImageView ivPicture;
         @BindView(R.id.tv_name)
         TextView tvName;
         @BindView(R.id.tv_email)

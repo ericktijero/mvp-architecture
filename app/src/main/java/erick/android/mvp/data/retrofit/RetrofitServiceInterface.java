@@ -12,6 +12,6 @@ import retrofit2.http.GET;
  */
 
 public interface RetrofitServiceInterface {
-    @GET("api/?results=5")
+    @GET("api/?results=10")
     Call<BaseResponse<List<User>>> getUsers();
 }
